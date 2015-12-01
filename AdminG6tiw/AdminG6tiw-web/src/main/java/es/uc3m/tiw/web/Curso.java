@@ -17,6 +17,7 @@ public class Curso {
 	private double comisionProfesor=0.7;
 	private double dineroPortal;
 	private double dineroProfe;
+	int comprobacion;
 	private ArrayList<Leccion> ListaLecciones= new ArrayList <Leccion>();
 	public ArrayList<Usuario> ListaUsuarios= new ArrayList<Usuario>();
 	
