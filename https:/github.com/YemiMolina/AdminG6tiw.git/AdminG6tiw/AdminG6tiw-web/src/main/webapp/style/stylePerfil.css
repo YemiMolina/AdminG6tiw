@@ -1,0 +1,22 @@
+@charset 'UTF-8';
+
+
+#CursosInscritos{
+	background-color: #82aad3;
+	padding: 10px;
+	color: black;
+}
+
+.enlacePerfil{
+	text-decoration: none;
+	color:black;
+	list-style-type: none;
+}
+
+.enlacePerfil:hover {
+	text-decoration: underline;	
+}
+
+.enlacesPerfil{
+	list-style-type: none;
+}

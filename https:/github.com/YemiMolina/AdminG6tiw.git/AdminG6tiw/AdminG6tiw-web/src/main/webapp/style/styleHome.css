@@ -1,0 +1,169 @@
+@charset 'UTF-8';
+
+/*Reestablecimeinto de márgenes*/
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+
+/*CSS del header (contenedor de título, logo y botones)*/
+#header{
+	font-family: 'Raleway', sans-serif;
+	font-size: 75px;
+	background-color: #313246;
+	height: 150px;
+	width: 100%;
+	display: inline-block;
+}
+
+#registroUsuario{
+height: 50px;
+margin-top: 10px;
+}
+
+.cuadro{
+float:left;
+margin-left: 15px;
+height: 20px;
+width: 120px;
+font-family: 'Raleway', sans-serif;
+font-size: 15px;
+}
+#usuario{
+margin-right: 33px;
+float:left;
+font-size: 20px;
+}
+#pas{
+margin: none;
+float:left;
+font-size: 20px;
+}
+
+.enlaceUsuario{
+	clear: both;
+	float: left;
+	font-family: sans-serif;
+	color: white;
+	text-decoration: none;
+}
+
+#botonSubmit {
+	clear: both;
+	float: left;
+	font-family: 'Raleway', sans-serif;
+	font-size: 15px;
+}
+#botonCerrar {
+	clear: both;
+	float: left;
+	font-family: 'Raleway', sans-serif;
+	font-size: 15px;
+}
+#logged {
+	display: none;
+}
+#usuarioActual{
+float:left;
+font-size: 20px;
+color: white;
+}
+
+/*CSS del body (limita ancho)*/
+#body{
+	background-color: #313246;
+	margin: 20px; 
+	border: none; 
+	padding: 0; 
+	background-color: #313246;
+}
+
+#titulo{
+	color: white;
+	line-height: 100px; /*Centra el texto verticalmente*/
+	line-left: 100px;
+}
+
+#imagenTitulo{
+	height: 100px;
+	width: 150px;
+	float: left;
+	margin-left: 30px;
+	margin-top: 30px;
+}
+
+.navbar {
+	margin: 0px;
+}
+
+.menu {
+	clear: both;
+}
+
+.menu-fixed{
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	box-shadow: 0px 2px 5px black;
+	width: 100%;
+	left:0;
+	max-width: 100%;
+	padding: 0px 20px;
+	
+}
+
+#carousel-example-generic{
+	width: 100%;
+	height: 500px;
+	clear: both;
+	float: left;
+	background-color:#313246;
+}
+
+/*CSS del pie de página*/
+#footer{
+	font-family: 'Raleway', sans-serif;
+	color: white;
+	text-align: center;
+	background-color: #707070;
+	float: left;
+	height: auto;
+	width: 100%;
+}
+
+/*enlaces del pie de página*/
+.enlaceF, .enlaceF:link, .enlaceF:visited, .enlaceF:active{
+	text-decoration: none;
+	color:white;
+}
+
+.enlaceF:hover{
+	text-decoration: underline; /*Subrayar al pasar el ratón por encima*/
+}
+
+
+#menud{
+	font-family: 'Raleway', sans-serif;
+	background-color: #474747;
+	height: 22px;
+	width: 100%;
+	margin-bottom: 5px;
+	
+	 /*Centra el texto*/
+}
+.enlace5{
+	float:left;
+	color: white;
+	text-decoration: none;
+	font-size: 17px;
+	margin-left:2%;
+	margin-right:1%;
+}
+
+.enlacesFinal{
+	list-style-type: none;
+}
+
+
+

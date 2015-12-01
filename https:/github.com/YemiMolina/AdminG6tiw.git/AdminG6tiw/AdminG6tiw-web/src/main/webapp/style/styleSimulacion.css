@@ -1,0 +1,98 @@
+@charset 'UTF-8';
+
+/*Reestablecimeinto de márgenes*/
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+/*CSS del div de servicios */
+#busqueda{
+	font-family: sans-serif;
+	background-color: #82aad3;
+	width: 100%;
+	text-align: center;
+	min-height: 650px;
+}
+
+.titulo{
+	color: #2358b8;
+}
+
+#parametros{
+	height: 100%;
+	width: 100%;
+	background-color: #297ACC;
+	float: left;
+	text-align: left;
+	color: white;
+}
+
+.titulosPar{
+	margin-left: 20px;
+	color: #B2E0FF;
+}
+
+.datosPar{
+	margin-left: 40px;
+}
+
+.restoOfertas{
+	height:100%;
+	width: 100%;
+	background-color: #1F5C99;
+	margin-bottom: 20px;
+	color:white;
+	
+}
+
+.tituloOferta{
+	color:#66CCFF;
+	margin-left: 20px;
+}
+
+.tituloDescripcion{
+	margin-left: 20px;
+}
+
+.descripcion{
+	margin-left: 20px;
+}
+
+.provincia{
+	margin-left: 20px;
+}
+
+.dificultad{
+	margin-left: 20px;
+	float: left;
+}
+
+.duracion{
+	margin-left: 70px;
+	float: left;
+}
+
+.salario{
+	margin-left: 70px;
+	float: left;
+}
+
+.experiencia{
+	margin-left: 70px;
+	float: left;
+}
+
+.inscripcion{
+	float: right;
+	margin-right: 40px;
+	color:black;
+	font-family: arial, sans-serif;
+}
+
+.check{
+	position: relative;
+	bottom: 20px;
+	left: 200px;
+}
+
