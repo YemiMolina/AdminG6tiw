@@ -3,6 +3,12 @@ function usuarioActual() {
 }
 
 
+function cerrarSesion() {
+	localStorage.removeItem("currentUser");
+	window.location.href = "../src/index.html";
+}
+
+
 function check(){
 
 	document.getElementById('oferta1').style.display="block";

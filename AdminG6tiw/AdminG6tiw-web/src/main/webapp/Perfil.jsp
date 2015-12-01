@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page import="es.uc3m.tiw.web.Usuario"%>
+<%@ page import="es.uc3m.tiw.model.Usuario"%>
 <%@ page import="es.uc3m.tiw.web.ServletRegistroUsuario"%>
-<%@ page import="es.uc3m.tiw.web.Curso"%>
+<%@ page import="es.uc3m.tiw.model.Curso"%>
 
 
 <!DOCTYPE html >
@@ -40,7 +41,7 @@
   <META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-<jsp:include page="HeaderLog.jsp"/>
+<%-- <jsp:include page="HeaderLog.jsp"/> --%>
 
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -55,7 +56,7 @@
 		Usuario usuario = (Usuario)request.getAttribute("usuario");
 				
 			%>
-			<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+			<%-- <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		      <div class="enlace5">
 		        <p>Usuario:<%=usuario.getUsuario() %></p>
 		        <p>Nombre:<%=usuario.getNombre() %></p>
@@ -67,9 +68,9 @@
 		        <p>Descripci&oacute;n: <%=usuario.getDescripcion() %></p>
 		        <p>Intereses: <%=usuario.getIntereses() %></p>
 		      </div>
-		    </div>     
+		    </div>   --%>   
 		  </div> 
-	 <a href="ServletRegistroUsuario?action=delete&id=<%=usuario.getUsuario()%>" >Eliminar perfil </a></li> 
+	<%--  <a href="ServletRegistroUsuario?action=delete&id=<%=usuario.getUsuario()%>" >Eliminar perfil </a></li>  --%>
   <div id="CursosInscritos">
       <p>Cursos en los que estoy MATRICULADO</p>
       
@@ -83,7 +84,7 @@
        <!--  Añadido para que salgan sus cursos -->
          <ul class="enlacesPerfil">
          
-         <% ArrayList<Curso> CursosMatriculados = (ArrayList<Curso>) request.getAttribute("CursosMatriculados");
+         <% List<Curso> CursosMatriculados = (ArrayList<Curso>) request.getAttribute("CursosMatriculados");
          if(CursosMatriculados!=null){
          for( Curso CursosMatriculados1 : CursosMatriculados){ %>
         <p>Titulo del CURSO:</p>

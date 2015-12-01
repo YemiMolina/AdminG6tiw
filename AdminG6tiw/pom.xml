@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.uc3m.tiw</groupId>
 	<artifactId>AdminG6tiw</artifactId>
-	<version>1.0</version>
+	<version>2.0</version>
 	<packaging>pom</packaging>
 	<name>TIW-Archetype</name>
 	<description>Archetype for rapid development. This archetype build a parent project with submodules like EAR, EJB, WAR, Util and Persistence model.
@@ -17,8 +17,8 @@
 	</organization>
 	<developers>
 		<developer>
-			<name>Yemi Molina</name>
-			<email>100283924@alumnos.uc3m.es</email>
+			<name>Your name</name>
+			<email>your@email</email>
 			<organization>TIW</organization>
 			<organizationUrl>http://www.dei.inf.uc3m.es</organizationUrl>
 			<roles>

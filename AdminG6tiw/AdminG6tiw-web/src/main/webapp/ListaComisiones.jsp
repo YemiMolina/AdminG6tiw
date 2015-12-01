@@ -7,6 +7,7 @@
     <%@ page import="es.uc3m.tiw.web.Curso"%>
     <%@ page import="es.uc3m.tiw.web.Leccion"%>
     <%@ page import="es.uc3m.tiw.web.ServletCursos"%>
+    <%@ page import="es.uc3m.tiw.web.Usuario"%>
 <!DOCTYPE html >
    
 <html>
@@ -24,7 +25,7 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-  <title>Cursos destacados</title>
+  <title>Lista comisiones</title>
   <meta name="Alex" content="Grupo de practicas TIW" lang="es">
   <link rel="icon" type="image/png" href="./images/icono.jpg"> 
 
@@ -73,17 +74,43 @@
 					<%System.out.println("que hay en id curos "+ id);
 					Curso curso= ServletCursos.BuscarCurso(Integer.parseInt(id));
 					double profe=1- curso.getComisionPortal();
-					System.out.println("basura "+profe);
+					System.out.println("salida profe "+profe);
+					
 					%>
 					
 					
-					<p>las comisi&oacute;n del curso con titulo<%=curso.getTitulo()  %>
+					<p>las comisiones del curso con titulo  <%=curso.getTitulo()  %>
 					<p>la comisi&oacute;n del portal curso <%=curso.getComisionPortal()  %>
 					<p>la comisi&oacute;n del profesor curso <%=profe  %> </p> </br>
 					
 					------------------------------------
-					<p> El salario para el profesor es; </p>
-					<%=curso.getSalarioProfesor() %>
+					
+					<%if (curso.getListaUsuario().size()<=0){
+						System.out.println("No hay nadie inscrito ");%>
+						<p> no hay nadie inscrito</p>
+						<p>lista tamaño <%=curso.getListaUsuario().size() %></p>
+					<% }else if (curso.getListaUsuario().size()>0){// si hay alguno te metes
+						System.out.println(" inscrito en el curso hay  "+curso.getListaUsuario().size());
+						ArrayList<Usuario> ListaUsuarios=curso.getListaUsuario();
+						/*Calendar calendario = new GregorianCalendar();
+						int hora =calendario.get(Calendar.HOUR_OF_DAY);
+						System.out.println("que tiempo vives"+ hora);*/
+						System.out.println("antes del for "+curso.getListaUsuario().get(0));
+						for (Usuario usuario : ListaUsuarios) {
+							System.out.println("dentro del for "+usuario);
+							String mat=usuario.getUsuario();
+							System.out.println("dentro del for "+mat);
+						%>
+						<li> <td>Usuarios que estan matriculados en este curso <%=mat %></td>
+							<li> <td><%//usuario.getUsuario%> </td>
+							
+						<% }//fin for
+						
+					}
+					%>
+					
+					<!--  <p> El salario para el profesor es; </p>-->
+					<%//curso.getSalarioProfesor() %>
 					
 					
 										

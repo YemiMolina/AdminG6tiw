@@ -25,6 +25,7 @@
     <%}%>  
 
     <a href="ServletMisCursos?id=<%=request.getParameter("id")%>">  Ir al perfil </a><br>
+    <a href="ServletCursos?id=130"> ir al catalogo</a>
         
 </body>
 </html>

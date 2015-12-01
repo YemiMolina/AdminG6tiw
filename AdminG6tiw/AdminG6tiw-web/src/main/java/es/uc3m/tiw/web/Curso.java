@@ -17,7 +17,7 @@ public class Curso {
 	private double comisionProfesor=0.7;
 	private double dineroPortal;
 	private double dineroProfe;
-	int comprobacion;
+	private Leccion leccion;
 	private ArrayList<Leccion> ListaLecciones= new ArrayList <Leccion>();
 	public ArrayList<Usuario> ListaUsuarios= new ArrayList<Usuario>();
 	
@@ -157,7 +157,20 @@ public class Curso {
 		public void AddUsuario(Usuario usuario){
 			ListaUsuarios.add(usuario);
 	    } 
-	
+		
+		public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
+			ListaUsuarios = listaUsuarios;
+		}
+		
+		public ArrayList<Usuario> getListaUsuario(){
+			return ListaUsuarios;
+	    } 
+		public void setLeccion(Leccion leccion){
+			this.leccion=leccion;
+		}
+		public Leccion getLeccion(){
+			return leccion;
+		}
 	
 	
 

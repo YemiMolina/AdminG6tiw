@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ page import="java.util.ArrayList"%>
+    <%@ page import="java.util.List"%>
     <%@ page import="java.util.Iterator"%>
-    <%@ page import="es.uc3m.tiw.web.Curso"%>
-     <%@ page import="es.uc3m.tiw.web.Usuario"%>
-      <%@ page import="es.uc3m.tiw.web.ServletPago"%>
+    <%@ page import="es.uc3m.tiw.model.Curso"%>
+    <%@ page import="es.uc3m.tiw.model.Usuario"%>
+    <%@ page import="es.uc3m.tiw.web.ServletPago"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +15,7 @@
     
     <%int idCursoActual = Integer.parseInt( request.getParameter("id"));%>
     <%double precio = Double.parseDouble( request.getParameter("precioFinal"));%>
-    <%ArrayList<Curso> CursosMatriculados = (ArrayList<Curso>)request.getAttribute("CursosMatriculados");
+    <%List<Curso> CursosMatriculados = (List<Curso>)request.getAttribute("CursosMatriculados");
     %>
 
 

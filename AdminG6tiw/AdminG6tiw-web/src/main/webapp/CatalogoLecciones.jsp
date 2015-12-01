@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page import="es.uc3m.tiw.web.Leccion"%>
+<%@ page import="es.uc3m.tiw.model.Leccion"%>
 <!DOCTYPE html >
    
 <html>
@@ -37,10 +37,12 @@
 
 <body>
   <!--Header-->
-  	<%if (session.getAttribute("usuario") != null) { %>
- 	<jsp:include page="HeaderLog.jsp"/>
+  	<%
+  
+  	if (session.getAttribute("usuario") != null) { %>
+ 	<jsp:include page="HeaderLog.jsp"/> 
 	<%}else{%>
-	<jsp:include page="Header.jsp"/>
+	 <jsp:include page="Header.jsp"/> 
 	<% } %>
 	
 	<div id="fondoBlanco" >
@@ -73,19 +75,18 @@
 			<ul>
 				<%
 					if (request.getAttribute("Listalecciones") != null) {
-						ArrayList<Leccion> ListaLecciones = (ArrayList<Leccion>) request.getAttribute("Listalecciones");
+						List<Leccion> ListaLecciones = (List<Leccion>) request.getAttribute("Listalecciones");
 						int contador = 0;
 						for (Leccion leccion : ListaLecciones) {
 				%>
 				<li><%=leccion.getDescripcion()%> 
 				<a href="ServletImagenes?foto=<%=leccion.getMaterial() %>">Material de la leccion</a><br><br>
 				</li>
-
-				
-
 				<%
 					contador++;
 				%>
+				<a href="ServletLecciones?action=delete&identificador=<%=request.getParameter("identificador")%>" >Eliminar leccion </a></li>
+				
 				<%
 					}
 					}

@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.ArrayList"%>
+    <%@ page import="java.util.List"%>
     <%@ page import="java.util.Iterator"%>
-    <%@ page import="es.uc3m.tiw.web.Curso"%>
-    <%@ page import="es.uc3m.tiw.web.Leccion"%>
-     <%@ page import="es.uc3m.tiw.web.Usuario"%>
+    <%@ page import="es.uc3m.tiw.model.Curso"%>
+    <%@ page import="es.uc3m.tiw.model.Leccion"%>
+    <%@ page import="es.uc3m.tiw.model.daos.ILeccion"%>
+    <%@ page import="es.uc3m.tiw.model.daos.LeccionDao"%>
+    <%@ page import="es.uc3m.tiw.model.Usuario"%>
      
-     <%@ page import="es.uc3m.tiw.web.ServletSession"%>
+    <%@ page import="es.uc3m.tiw.web.ServletSession"%>
     <%@ page import="javax.servlet.ServletException"%>
     <%@ page import="javax.servlet.annotation.WebServlet"%>
     <%@ page import="javax.servlet.http.HttpServlet"%>
@@ -79,7 +81,7 @@
     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
 
 <%
-	ArrayList<Curso> Listacursos = (ArrayList<Curso>) request.getAttribute("Listacursos");
+	List<Curso> Listacursos = (List<Curso>) request.getAttribute("Listacursos");
 	//Iterator<Curso> iterador = null;
 	int contador=0;
 	for(Curso curso: Listacursos) {
@@ -88,9 +90,10 @@
 		
 		%>
 		<div id="fondoBlanco" style="margin: 5px">
+		
 		<li><%=curso.getTitulo() %> <br>
 		<%=curso.getDescripcion() %> <br>
-		<%=curso.getId() %> <br>
+		<%=curso.getIdcursos() %> <br>
 		El precio inicial es:<%=curso.getPrecio()%><br>
 		El precio final es: <%=curso.getPrecioFinal()%> <br>
 		Estado de validacion del curso: <%if(curso.getValidacion()== false){%>Pendiente de Validar <%}else{%> Curso Validado <%}%><br>
@@ -101,15 +104,20 @@
 		 
 		
 		 
-		 <a href="ServletLecciones?id=<%=curso.getId()%>" > Ver sus Lecciones </a></li><br>
-		  <a href="CatalogoLecciones.jsp?id=<%=curso.getId()%>" > Añadir Leccion </a></li> <br>
-		  <a href="Matriculacion.jsp?id=<%=curso.getId()%>&precioFinal=<%=curso.getPrecioFinal()%>" > Matricularse en este curso </a></li> <br>
-		 <a href="ServletCursos?action=delete&id=<%=contador%>" >Eliminar curso </a></li>
-		 <br>
-		 <a href="Validar.jsp?id=<%=curso.getId()%>" > Ir al validador de curso </a></li><br>
-		 <a href="Destacar.jsp?id=<%=curso.getId()%>" > Ir al interfaz de cursos destacados </a></li><br>
-		 <a href="ListaComisiones.jsp?id=<%=curso.getId()%>" > Ir al interfaz de comisiones de los cursos </a></li><br>
-		 	<a href="ServletCursos?action=modificar&id=<%=curso.getId()%>" > Modificar Curso </a></li><br>
+		 <a href="ServletLecciones?id=<%=curso.getIdcursos()%>" > Ver sus Lecciones </a></li><br>
+		 <a href="CatalogoLecciones.jsp?id=<%=curso.getIdcursos()%>" > Añadir Leccion </a></li> <br>
+		 <a href="Matriculacion.jsp?id=<%=curso.getIdcursos()%>&precioFinal=<%=curso.getPrecioFinal()%>" > Matricularse en este curso </a></li> <br>
+			 <a href="PersistenceServletCursos?action=delete&id=<%=curso.getIdcursos()%>" >Eliminar curso </a></li>
+			 <br>
+			 <a href="PersistenceServletCursos?action=validar&id=<%=curso.getIdcursos()%>" > Ir al validador de curso </a></li><br>
+			 <a href="PersistenceServletCursos?action=destacar&id=<%=curso.getIdcursos()%>" > Ir al interfaz de cursos destacados </a></li><br>
+			  <a href="ListaComisiones.jsp?id=<%=curso.getIdcursos()%>" > Ir al interfaz de comisiones de los cursos </a></li><br>
+			  	<a href="PersistenceServletCursos?action=modificar&id=<%=curso.getIdcursos()%>" > Modificar Curso </a></li><br>
+			  	<a href="ServletPromociones?id=<%=curso.getIdcursos()%>" > Añadir Promocion </a></li> <br>
+			  	<a href="PersistenceServletCursos?action=listarCursos%>" > servlet persistencia </a></li> <br>
+			  	<a href="PersistenceServletCursos?action=listarCursos" > llamar al listado de persistencia de cursos </a></li> <br>
+			  	<a href="PersistenceServletCursos?action=promocion&id=<%=curso.getIdcursos()%>" > crear o borrar promocion en este curso </a></li> <br>
+				<a href="PersistenceBuscadorCursos.jsp" > Buscar cursos  </a></li> <br>
 		</div>
 		<%contador++; %>
 		<%
@@ -121,16 +129,20 @@
 			<div id="fondoBlanco" style="margin: 5px">
 			<li>El curso <%=curso.getTitulo() %> no ha sido validado, por favor seleccione la opcion de validar si desea ver el curso <br>
 				<%//curso.getId() %> <br>
-			 <a href="ServletLecciones?id=<%=curso.getId()%>" > Ver sus Lecciones </a></li><br>
-		 	 <a href="CatalogoLecciones.jsp?id=<%=curso.getId()%>" > Añadir Leccion </a></li> <br>
-		 	 <a href="Matriculacion.jsp?id=<%=curso.getId()%>&precioFinal=<%=curso.getPrecioFinal()%>" > Matricularse en este curso </a></li> <br>
-			 <a href="ServletCursos?action=delete&id=<%=contador%>" >Eliminar curso </a></li>
+			 <a href="ServletLecciones?action=mostrar&id=<%=curso.getIdcursos()%>" > Ver sus Lecciones </a></li><br>
+		 	 <a href="CatalogoLecciones.jsp?id=<%=curso.getIdcursos()%>" > Añadir Leccion </a></li> <br>
+		 	 <a href="Matriculacion.jsp?id=<%=curso.getIdcursos()%>&precioFinal=<%=curso.getPrecioFinal()%>" > Matricularse en este curso </a></li> <br>
+			<a href="PersistenceServletCursos?action=delete&id=<%=curso.getIdcursos()%>" >Eliminar curso </a></li>
 			 <br>
-			 <a href="Validar.jsp?id=<%=curso.getId()%>" > Ir al validador de curso </a></li><br>
-			 <a href="Destacar.jsp?id=<%=curso.getId()%>" > Ir al interfaz de cursos destacados </a></li><br>
-			  <a href="ListaComisiones.jsp?id=<%=curso.getId()%>" > Ir al interfaz de comisiones de los cursos </a></li><br>
-			  	<a href="ServletCursos?action=modificar&id=<%=curso.getId()%>" > Modificar Curso </a></li><br>
-			</div>
+			 <a href="PersistenceServletCursos?action=validar&id=<%=curso.getIdcursos()%>" > Ir al validador de curso </a></li><br>
+			 <a href="PersistenceServletCursos?action=destacar&id=<%=curso.getIdcursos()%>" > Ir al interfaz de cursos destacados </a></li><br>
+			  <a href="ListaComisiones.jsp?id=<%=curso.getIdcursos()%>" > Ir al interfaz de comisiones de los cursos </a></li><br>
+			  	<a href="PersistenceServletCursos?action=modificar&id=<%=curso.getIdcursos()%>" > Modificar Curso </a></li><br>
+			  	<a href="ServletPromociones?id=<%=curso.getIdcursos()%>" > Añadir Promocion </a></li> <br>
+			  	<a href="PersistenceServletCursos?action=listarCursos%>" > servlet persistencia </a></li> <br>
+			  	<a href="PersistenceServletCursos?action=listarCursos" > llamar al listado de persistencia de cursos </a></li> <br>
+			  	<a href="PersistenceServletCursos?action=promocion&id=<%=curso.getIdcursos()%>" > crear o borrar promocion en este curso </a></li> <br>
+				<a href="PersistenceBuscadorCursos.jsp" > Buscar cursos  </a></li> <br>
 			<%
 			contador++;// esto esta en el de arriba supongo que tendra que ir aqui igual
 		}

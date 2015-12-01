@@ -37,7 +37,7 @@
 
 <div id="fondoBlanco" >
 <p> <strong>Formulario para dar de alta los cursos a la plataforma Dokulearning</strong></p>
-<form action="ServletCursos" enctype="multipart/form-data" method="post">
+<form action="PersistenceServletCursos" enctype="multipart/form-data" method="post"> <!--  aqui he metido el cambio en action que tiene como valor de antes ServletCursps y yo le pongo PersistenceServletCursos-->
     <hr>
     <fieldset>
     <legend> Alta de curso 

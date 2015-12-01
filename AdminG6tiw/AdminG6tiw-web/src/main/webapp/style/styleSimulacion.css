@@ -38,12 +38,12 @@
 }
 
 .restoOfertas{
-	height:150px;
+	height:100%;
 	width: 100%;
 	background-color: #1F5C99;
 	margin-bottom: 20px;
 	color:white;
-	margin: 5px;
+	
 }
 
 .tituloOferta{
