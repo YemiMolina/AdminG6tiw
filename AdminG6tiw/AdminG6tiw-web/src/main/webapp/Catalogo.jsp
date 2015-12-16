@@ -106,7 +106,7 @@
 		 
 		 <a href="ServletLecciones?id=<%=curso.getIdcursos()%>" > Ver sus Lecciones </a></li><br>
 		 <a href="CatalogoLecciones.jsp?id=<%=curso.getIdcursos()%>" > Añadir Leccion </a></li> <br>
-		 <a href="Matriculacion.jsp?id=<%=curso.getIdcursos()%>&precioFinal=<%=curso.getPrecioFinal()%>" > Matricularse en este curso </a></li> <br>
+		 <a href="ServletPago?id=<%=curso.getIdcursos()%>" > Matricularse en este curso </a></li> <br>
 			 <a href="PersistenceServletCursos?action=delete&id=<%=curso.getIdcursos()%>" >Eliminar curso </a></li>
 			 <br>
 			 <a href="PersistenceServletCursos?action=validar&id=<%=curso.getIdcursos()%>" > Ir al validador de curso </a></li><br>
@@ -116,7 +116,9 @@
 			  	<a href="ServletPromociones?id=<%=curso.getIdcursos()%>" > Añadir Promocion </a></li> <br>
 			  	<a href="PersistenceServletCursos?action=listarCursos%>" > servlet persistencia </a></li> <br>
 			  	<a href="PersistenceServletCursos?action=listarCursos" > llamar al listado de persistencia de cursos </a></li> <br>
-			  	<a href="PersistenceServletCursos?action=promocion&id=<%=curso.getIdcursos()%>" > crear o borrar promocion en este curso </a></li> <br>
+			  	<a href="PersistenceServletPromociones?action=promocion" > crear o borrar promocion en este curso </a></li> <br>
+			  	<a href="PersistenceServletCursos?action=promocion&id=<%=curso.getIdcursos()%>" > crear o borrar promocion en este curso 2</a></li> <br>
+				<a href="ServletPago?action=conciliar&id=<%=curso.getIdcursos()%>" > Conciliar pagos </a></li> <br>
 				<a href="PersistenceBuscadorCursos.jsp" > Buscar cursos  </a></li> <br>
 		</div>
 		<%contador++; %>
@@ -131,7 +133,7 @@
 				<%//curso.getId() %> <br>
 			 <a href="ServletLecciones?action=mostrar&id=<%=curso.getIdcursos()%>" > Ver sus Lecciones </a></li><br>
 		 	 <a href="CatalogoLecciones.jsp?id=<%=curso.getIdcursos()%>" > Añadir Leccion </a></li> <br>
-		 	 <a href="Matriculacion.jsp?id=<%=curso.getIdcursos()%>&precioFinal=<%=curso.getPrecioFinal()%>" > Matricularse en este curso </a></li> <br>
+		 	 <a href="ServletPago?id=<%=curso.getIdcursos()%>" > Matricularse en este curso </a></li> <br>
 			<a href="PersistenceServletCursos?action=delete&id=<%=curso.getIdcursos()%>" >Eliminar curso </a></li>
 			 <br>
 			 <a href="PersistenceServletCursos?action=validar&id=<%=curso.getIdcursos()%>" > Ir al validador de curso </a></li><br>
@@ -141,7 +143,9 @@
 			  	<a href="ServletPromociones?id=<%=curso.getIdcursos()%>" > Añadir Promocion </a></li> <br>
 			  	<a href="PersistenceServletCursos?action=listarCursos%>" > servlet persistencia </a></li> <br>
 			  	<a href="PersistenceServletCursos?action=listarCursos" > llamar al listado de persistencia de cursos </a></li> <br>
-			  	<a href="PersistenceServletCursos?action=promocion&id=<%=curso.getIdcursos()%>" > crear o borrar promocion en este curso </a></li> <br>
+			  	<a href="PersistenceServletPromociones?action=promocion" > crear o borrar promocion en este curso </a></li> <br>
+			  	<a href="PersistenceServletCursos?action=promocion&id=<%=curso.getIdcursos()%>" > crear o borrar promocion en este curso 2</a></li> <br>
+				<a href="ServletPago?action=conciliar&id=<%=curso.getIdcursos()%>" > Conciliar pagos </a></li> <br>
 				<a href="PersistenceBuscadorCursos.jsp" > Buscar cursos  </a></li> <br>
 			<%
 			contador++;// esto esta en el de arriba supongo que tendra que ir aqui igual

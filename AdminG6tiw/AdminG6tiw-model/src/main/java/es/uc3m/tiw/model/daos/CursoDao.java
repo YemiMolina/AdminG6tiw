@@ -85,8 +85,10 @@ public class CursoDao  implements ICurso{
 	
 	@Override
 	public Curso findById(int id) {
-	Curso cursoEncontrado=em.find(Curso.class, new Integer(id));
-		return cursoEncontrado;
+		Query query =  em.createQuery("SELECT u FROM Curso u join fetch u.Profesor where u.idcursos=:idcursos", Curso.class);
+		query.setParameter("idcursos", id);
+		//Curso cursoEncontrado=em.find(Curso.class, new Integer(id));
+		return (Curso) query.getSingleResult();
 	
 	}
 	@Override

@@ -9,7 +9,7 @@
     <%@ page import="es.uc3m.tiw.model.daos.ICurso"%>
     <%@ page import="es.uc3m.tiw.web.Usuario"%>
      
-    
+     <%@ page import="es.uc3m.tiw.model.Promocion"%>
     <%@ page import="es.uc3m.tiw.web.ServletPromociones"%>
 <!DOCTYPE html >
    
@@ -51,8 +51,8 @@
 	<jsp:include page="Header.jsp"/>
 	<% } %>
 	
-	<div id="fondoBlanco" >
-	<form action="PersistenceServletCursos" enctype="multipart/form-data" method="post">
+	<div id="fondoBlanco" ><!-- cambio aqui lo que estaba de PersistenceServletCursos por PersistenceServletPromociones -->
+	<form action="PersistenceServletPromociones" enctype="multipart/form-data" method="post">
 		<legend> Contenido de las promociones de cursos  </legend>
 		
 		<div class="container">
@@ -62,39 +62,48 @@
 				<div class="col-xs-14 col-md-6">
 				<h4>Informaci&oacute;n sobre las pormociones de los cursos </h4>
 				
-				<% List<Curso> Listacursos = (List<Curso>) request.getAttribute("Listacursos");
+				<% List<Promocion> Listacursos = (List<Promocion>) request.getAttribute("ListaPromocion");// esto es la lista de promociones no de cursos pero paso d ecmabiar el nombre 
 			   	 String idcurso=(String)request.getAttribute("idcursos");
 			   	 Integer id= Integer.valueOf(idcurso);
+			   	 int numPromociones=Listacursos.size();
 			    
-				for(Curso curso: Listacursos) {
-					if	(curso.getIdcursos().equals(id)){%>
+				
+					if	(numPromociones==0){%>
 						<p>Recuerda que una vez creada la promoci&oacute;n no se puede modificar, solo borrar </p>
 						<p> tiene prevalencia la promoción sobre el cupón</p>
-						
-						
-					<br>
-						<p>El precio actual del curso es: <%=curso.getPrecio() %> </p><br>
-						<%if(curso.getDescuentoPromocion()==0){// si es 0 es que no hay promocion xa ese curspo
-							System.out.println("eestoy dentro del if para la promocion de cursos dando la promocion al curso "+curso.getIdcursos());
-							%>
 							<p>No existe ninguna promocion, puedes crear ahora una</p><br>
 							 <p> -Indica el descuento con un numero de 0 a 100: <input type="number" name="descuento"></p> <br>
-							
-							 <br>
-							  <input type="text" name="id" value=<%=curso.getIdcursos() %> readonly="readonly" />
-							
-							 <input type="text" name="promocion" value="promocion" readonly="readonly" />
-							 <br>
-								<a href="PersistenceServletCursos?action=crearPromocion&id=<%=curso.getIdcursos()%>&descuento= descuento" > Volver al listado  de cursos </a></li> <br>
-							<input type="submit" value="Dar de alta">
-								
 							<br>
+							 <p> -Indica la fecha de caducidad con el siguiente formato DD/MM/AAAA :  <input type="text" name="fecha"></p> <br>
+							 <br>
+							 <input type="submit" value="Crear">
+							 <br>
+							 <a href="PersistenceServletCursos?action=listarCursos" > Volver al listado  de cursos </a></li> <br>
+						
+					<br>
+						
+						
 							
 							<% }else {%>
-								<p>Existe una promocion,</p><br>
-								<a href="PersistenceServletCursos?action=listarCursos" > Volver al listado  de cursos </a></li> <br>
-								<a href="PersistenceServletCursos?action=borrarPromocion&id=<%=curso.getIdcursos()%>" > borrar promocion en este curso </a></li> <br>
-								
+								<p>Existe alguna promocion,</p><br>
+								<% for(Promocion promo: Listacursos) {%>
+									<p>Tienes las siguientes pormociones</p><br>
+									<p>ID pormociones  <%=promo.getIdPromocion() %></p><br>
+									<p>Con fecha de caducidad   <%=promo.getFecha() %></p><br>
+									<p>Con cantidad  <%=promo.getCantidad() %></p><br>
+									
+									<p>Puedes crear otra si deseas. Recuerda que una vez creada la promoci&oacute;n no se puede modificar, solo borrar </p>
+						<p> tiene prevalencia la promoción sobre el cupón</p>
+							<p>No existe ninguna promocion, puedes crear ahora una</p><br>
+							 <p> -Indica el descuento con un numero de 0 a 100: <input type="number" name="descuento"></p> <br>
+							<br>
+							 <p> -Indica la fecha de caducidad con el siguiente formato DD/MM/AAAA :  <input type="text" name="fecha"></p> <br>
+							 <br>
+							 <input type="submit" value="Crear">
+									
+									<a href="PersistenceServletCursos?action=listarCursos" > Volver al listado  de cursos </a></li> <br>
+									<a href="PersistenceServletCursos?action=borrarPromocion&id=<%=promo.getIdPromocion()%>" > borrar promocion en este curso </a></li> <br>
+								<% }// fin for%>
 							<% }
 							%>
 						
@@ -107,8 +116,8 @@
 						
 						
 						
-					<%}// fin if de igualacion id
-				}// fin for
+					<%
+				
 				
 				%>
 				

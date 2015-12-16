@@ -50,7 +50,7 @@ import es.uc3m.tiw.model.Curso;
  */
 @WebServlet("/PersistenceServletCursos")
 @MultipartConfig
-//@WebServlet("/ServletCursos")
+
 public class PersistenceServletCursos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static List <Curso> Listacursos = new ArrayList<Curso>();   
@@ -76,7 +76,7 @@ public class PersistenceServletCursos extends HttpServlet {
         super.init(config);
         Curso curso3= new Curso("titulo3", "descripcion3", "dificultad3", 3, 3, "imagenuri3", 10, false, false, 0.3, 0.7, 0, 0);
        // Curso curso1= new Curso("curso1","descripcion1","dificultad1", 1, 20,130,10.0, );
-        Curso curso1 = new Curso("titulo1", "descripcion1", "dificultad1", 1, 1, "imagenUri1", 10);
+        Curso curso1 = new Curso("titulo1", "descripcion1", "dificultad1", 1, 1, "imagenUri1", 10,null);
        // Curso curso2= new Curso("curso2","descripcion2","dificultad2", 2, 20,131,10.0);
         Listacursos.add(curso1);
         Listacursos.add(curso3);
@@ -85,7 +85,7 @@ public class PersistenceServletCursos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 		List<Curso> listaCursosBusqueda = null;
 		String accion=(String) request.getParameter("action");
 		String id=(String) request.getParameter("id");
@@ -354,7 +354,7 @@ public class PersistenceServletCursos extends HttpServlet {
 				}// fin else
 			//pinta lo anterior en el jsp catalogo
 			}// fin else de la parte 	que NO ha entrado en la promocion
-		this.getServletConfig().getServletContext().getRequestDispatcher(redireccion).forward(request, response);
+		//this.getServletConfig().getServletContext().getRequestDispatcher(redireccion).forward(request, response);
 		}
 		
 	

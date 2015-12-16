@@ -12,8 +12,11 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 <class>es.uc3m.tiw.model.Direccion</class>
 <class>es.uc3m.tiw.model.Persona</class>
 <class>es.uc3m.tiw.model.Leccion</class>
+<class>es.uc3m.tiw.model.Vale</class>
+<class>es.uc3m.tiw.model.PedidoPagoTIW</class>
+<class>es.uc3m.tiw.model.Promocion</class>
 <properties>
-	<property name="javax.persistence.schema-generation.database.action" value="update"/>
+	<property name="javax.persistence.schema-generation.database.action" value="create"/>
 </properties>
 
 </persistence-unit>

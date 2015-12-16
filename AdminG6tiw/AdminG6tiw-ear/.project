@@ -3,8 +3,6 @@
 	<name>AdminG6tiw-ear</name>
 	<comment></comment>
 	<projects>
-		<project>AdminG6tiw-web</project>
-		<project>AdminG6tiw-model</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

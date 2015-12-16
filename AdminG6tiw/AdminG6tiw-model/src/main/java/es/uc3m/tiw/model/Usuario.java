@@ -23,19 +23,21 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = AUTO)
-	private int idusuarios;
+	private Integer idusuarios;
 	private String nombre;
 	
 	@ManyToMany
-	private List <Curso> ListaCursos =new ArrayList <Curso>();
+	private List <Curso> ListaCursosAlumno =new ArrayList <Curso>();
 	
+	@OneToMany(mappedBy="Profesor")
+	private List <Curso> ListaCursosProfesor =new ArrayList <Curso>();
 
-	public List<Curso> getListaCursos() {
-		return ListaCursos;
+	public List<Curso> getListaCursosAlumno() {
+		return ListaCursosAlumno;
 	}
 
-	public void setListaCursos(List<Curso> listaCursos) {
-		ListaCursos = listaCursos;
+	public void setListaCursosAlumno(List<Curso> listaCursosAlumno) {
+		ListaCursosAlumno = listaCursosAlumno;
 	}
 
 	public Usuario() {
@@ -101,6 +103,14 @@ public class Usuario extends Persona {
 	 * 
 	 * 
 	 * */
+
+	public List<Curso> getListaCursosProfesor() {
+		return ListaCursosProfesor;
+	}
+
+	public void setListaCursosProfesor(List<Curso> listaCursosProfesor) {
+		ListaCursosProfesor = listaCursosProfesor;
+	}
 	
 	
 	/*public static List<Curso> Matricular (Curso curso){ //le paso el id del curso

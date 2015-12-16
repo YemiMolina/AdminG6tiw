@@ -22,26 +22,24 @@ import static javax.persistence.CascadeType.ALL;
 public class Curso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@ManyToMany(cascade = ALL)
+	private List<Usuario> Alumnos;
+
+	private double comisionPortal=0.3;
+	private double comisionProfesor=0.7;
+	//añadisdos despuesde la prueba dl dia 16
+	private String descripcion;
+	private double descuento;
+	private double descuentoPromocion=0;
+	private boolean destacado=false; // un curso no sera destacado por defecto
+	private String dificultad;
+	private double dineroPortal;
+	private double dineroProfe;
+	private int id;// este id es secundario ya, no me va a hacer falta
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private Integer idcursos;
-
-	private String titulo;
-	//añadisdos despuesde la prueba dl dia 16
-	private String descripcion;
-	private String dificultad;
-	private int numeroh;
-	private double precio;
 	private String imagenuri;
-	private int id;// este id es secundario ya, no me va a hacer falta
-	private double descuento;
-	private boolean validado=false;// la validacion es falsa por deecto
-	private boolean destacado=false; // un curso no sera destacado por defecto
-	private double comisionPortal=0.3;
-	private double comisionProfesor=0.7;
-	private double dineroPortal;
-	private double dineroProfe;
-	private double descuentoPromocion=0;
 	
 	@OneToOne(cascade = ALL)
 	private Leccion leccion;
@@ -50,8 +48,17 @@ public class Curso implements Serializable {
 	private List<Leccion> ListaLecciones= new ArrayList <Leccion>();
 	
 	@ManyToMany(cascade = ALL)
-	private List<Usuario> ListaUsuarios= new ArrayList<Usuario>();
+	private List<Usuario> ListaAlumnos= new ArrayList<Usuario>();
+	
+	private int numeroh;
+	private double precio;
+	
+	@ManyToOne(cascade = ALL)
+//	@JoinColumn()
+	private Usuario Profesor ;
 
+	private String titulo;
+	private boolean validado=false;// la validacion es falsa por deecto
 	
 	public Curso() {
 		super();
@@ -62,20 +69,8 @@ public class Curso implements Serializable {
 		this.idcursos=id;
 		this.titulo=titulo;
 	}
-	public Curso ( String titulo, String descripcion, String dificultad, int numeroh, double precio, String imagenUri, double descuento){
-		this.titulo=titulo;
-		this.descripcion = descripcion;
-		this.dificultad = dificultad;
-		this.numeroh = numeroh;
-		this.precio = precio;
-		this.imagenuri = imagenUri;
-		this.descuento = descuento;
-		
-	}
-		
-	
-	
 
+	
 	public Curso( String titulo, String descripcion,
 			String dificultad, int numeroh, double precio, String imagenuri,
 			double descuento, boolean validado, boolean destacado,
@@ -97,126 +92,162 @@ public class Curso implements Serializable {
 		this.dineroPortal = dineroPortal;
 		this.dineroProfe = dineroProfe;
 	}
-
-	public Integer getIdcursos() {
-		return this.idcursos;
-	}
-
-	public void setIdcursos(Integer idcursos) {
-		this.idcursos = idcursos;
-	}
-
-	public String getTitulo() {
-		return this.titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	public double getPrecioFinal(){
-		return precio-descuento;
-	}
 	
+	public Curso ( String titulo, String descripcion, String dificultad, int numeroh, double precio, String imagenUri, double descuento, Usuario profesor){
+		this.titulo=titulo;
+		this.descripcion = descripcion;
+		this.dificultad = dificultad;
+		this.numeroh = numeroh;
+		this.precio = precio;
+		this.imagenuri = imagenUri;
+		this.descuento = descuento;
+		this.Profesor = profesor;
+		
+	}
+	public void AddUsuario(Usuario usuario){
+		ListaAlumnos.add(usuario);
+	}
+		
+	
+	
+
+	public double getComisionPortal() {
+		return comisionPortal;
+	}
+
+	public double getComisionProfesor() {
+		return comisionProfesor;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
 	public double getDescuento() {
 		return descuento;
 	}
-	public void setDescuento(double descuento) {
-		this.descuento = descuento;
+
+	public double getDescuentoPromocion() {
+		return descuentoPromocion;
+	}
+	public boolean getDestacado() {
+		return destacado;
 	}
 	
-	public List<Leccion> getListaLecciones() {
-		return ListaLecciones;
+	public String getDificultad() {
+		return dificultad;
 	}
-	public void setListaLecciones(List<Leccion> listaLecciones) {
-		ListaLecciones = listaLecciones;
+	public double getDineroPortal() {
+		return dineroPortal;
+	}
+	
+	public double getDineroProfesor() {
+		return dineroProfe;
+	}
+	public Integer getIdcursos() {
+		return this.idcursos;
 	}
 	public String getImagenuri() {
 		return imagenuri;
 	}
-	public void setImagenuri(String imagenuri) {
-		this.imagenuri = imagenuri;
+	public Leccion getLeccion(){
+		return leccion;
 	}
-	public String getDescripcion() {
-		return descripcion;
+	public List<Leccion> getListaLecciones() {
+		return ListaLecciones;
 	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	public String getDificultad() {
-		return dificultad;
-	}
-	public void setDificultad(String dificultad) {
-		this.dificultad = dificultad;
+	public List<Usuario> getListaAlumnos(){
+		return ListaAlumnos;
 	}
 	public int getNumeroh() {
 		return numeroh;
 	}
-	public void setNumeroh(int numeroh) {
-		this.numeroh = numeroh;
-	}
 	public double getPrecio() {
 		return precio;
 	}
-	public void setPrecio(double precio) {
-		this.precio = precio;
+	public double getPrecioFinal(){
+		return precio-descuento;
+	}
+	public Usuario getProfesor() {
+		return Profesor;
+	}
+	//Funcion en la que el profesor se queda con el 70% del precio del curso
+	public Double getSalarioProfesor(){
+	double Salario= getPrecioFinal()*0.70;
+	int numeroUsuarios=ListaAlumnos.size();
+	double salarioTotal=numeroUsuarios*Salario;
+	setDienroProfesor(salarioTotal);
+	return salarioTotal;
+	}
+	public String getTitulo() {
+		return this.titulo;
 	}
 	
 	public boolean getValidacion() {
 		return validado;
 	}
-	public void setValidacion(boolean validar) {
-		this.validado = validar;
-	}
-	public boolean getDestacado() {
-		return destacado;
-	}
-	public void setDestacado(boolean destacado) {
-		this.destacado = destacado;
-	}
-	public double getComisionPortal() {
-		return comisionPortal;
-	}
 	public void setComisionPortal(double comision) {
 		this.comisionPortal = comision;
-	}
-	public double getComisionProfesor() {
-		return comisionProfesor;
 	}
 	public void setComisionProfesor(double comision) {
 		this.comisionProfesor = comision;
 	}
-	public double getDineroProfesor() {
-		return dineroProfe;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
-	public void setDienroProfesor(double dinero) {
-		this.dineroProfe = dinero;
+	public void setDescuento(double descuento) {
+		this.descuento = descuento;
 	}
-	public double getDineroPortal() {
-		return dineroPortal;
+	public void setDescuentoPromocion(double descuentoPromocion) {
+		this.descuentoPromocion = descuentoPromocion;
+	}
+	public void setDestacado(boolean destacado) {
+		this.destacado = destacado;
 	}
 	public void setDienroPortal(double dinero) {
 		this.dineroPortal = dinero;
 	}
-	//Funcion en la que el profesor se queda con el 70% del precio del curso
-		public Double getSalarioProfesor(){
-		double Salario= getPrecioFinal()*0.70;
-		int numeroUsuarios=ListaUsuarios.size();
-		double salarioTotal=numeroUsuarios*Salario;
-		setDienroProfesor(salarioTotal);
-		return salarioTotal;
+	public void setDienroProfesor(double dinero) {
+		this.dineroProfe = dinero;
+	}
+	public void setDificultad(String dificultad) {
+		this.dificultad = dificultad;
+	}
+	public void setIdcursos(Integer idcursos) {
+		this.idcursos = idcursos;
+	}
+	public void setImagenuri(String imagenuri) {
+		this.imagenuri = imagenuri;
+	}
+	public void setLeccion(Leccion leccion){
+			this.leccion=leccion;
 		}
-		public void AddUsuario(Usuario usuario){
-			ListaUsuarios.add(usuario);
-	    } 
+		public void setListaLecciones(List<Leccion> listaLecciones) {
+			ListaLecciones = listaLecciones;
+		} 
 		
-		public void setListaUsuarios(List<Usuario> listaUsuarios) {// da aqui el error de la lista
-			ListaUsuarios = listaUsuarios;
+		public void setListaAlumnos(List<Usuario> listaUsuarios) {// da aqui el error de la lista
+			ListaAlumnos = listaUsuarios;
 		}
 		
-		public List<Usuario> getListaUsuario(){
-			return ListaUsuarios;
-	    }
+		public void setNumeroh(int numeroh) {
+			this.numeroh = numeroh;
+		}
 
+		public void setPrecio(double precio) {
+			this.precio = precio;
+		}
+		
+		public void setProfesor(Usuario profesor) {
+			Profesor = profesor;
+		}
+		public void setTitulo(String titulo) {
+			this.titulo = titulo;
+		}
+
+		public void setValidacion(boolean validar) {
+			this.validado = validar;
+		}
 		@Override
 		
 			public String toString() {
@@ -229,21 +260,7 @@ public class Curso implements Serializable {
 						+ comisionPortal + ", comisionProfesor=" + comisionProfesor
 						+ ", dineroPortal=" + dineroPortal + ", dineroProfe="
 						+ dineroProfe + ", ListaLecciones=" + ListaLecciones
-						+ ", ListaUsuarios=" + ListaUsuarios + "]";
+						+ ", ListaUsuarios=" + ListaAlumnos + "]";
 				}
-		
-		public void setLeccion(Leccion leccion){
-			this.leccion=leccion;
-		}
-		public Leccion getLeccion(){
-			return leccion;
-		}
-
-		public void setDescuentoPromocion(double descuentoPromocion) {
-			this.descuentoPromocion = descuentoPromocion;
-		}
-		public double getDescuentoPromocion() {
-			return descuentoPromocion;
-		}
 
 }

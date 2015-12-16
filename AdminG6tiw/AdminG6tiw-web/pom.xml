@@ -21,10 +21,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-          
-            <scope>provided</scope>
+        	<groupId>javax</groupId>
+        	<artifactId>javaee-api</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>es.uc3m.tiw.ejb</groupId>
+        	<artifactId>AdminG6tiw-ejb</artifactId>
+        	<version>2.0</version>
+        	<type>ejb</type>
+        </dependency>
+        <dependency>
+        	<groupId>es.uc3m.tiw.model</groupId>
+        	<artifactId>AdminG6tiw-model</artifactId>
+        	<version>2.0</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.sun.jersey</groupId>
+        	<artifactId>jersey-client</artifactId>
+        	<version>1.19</version>
         </dependency>
     </dependencies>
 

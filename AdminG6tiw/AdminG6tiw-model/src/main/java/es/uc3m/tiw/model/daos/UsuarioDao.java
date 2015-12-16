@@ -32,13 +32,13 @@ public class UsuarioDao implements IUsuario{
 			 * @see es.uc3m.tiw.model.daos.IPersona#createUsuario(es.uc3m.tiw.model.Usuario)
 			 */
 			@Override
-			public Usuario createUsuario(Usuario cursoNuevo) throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException, HeuristicRollbackException, RollbackException {
+			public Usuario createUsuario(Usuario cursoUsuario) throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException, HeuristicRollbackException, RollbackException {
 
 				ut.begin();
 				System.out.println("CreateCurso en CursoDAO");
-				em.persist(cursoNuevo);
+				em.persist(cursoUsuario);
 				ut.commit();
-				return cursoNuevo;
+				return cursoUsuario;
 				
 			}
 			

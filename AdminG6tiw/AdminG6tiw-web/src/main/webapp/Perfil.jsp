@@ -41,7 +41,8 @@
   <META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-<%-- <jsp:include page="HeaderLog.jsp"/> --%>
+<%-- <jsp:include page="HeaderLog.jsp"/>  --%>
+<!-- si no pongo esto en comentario me salta nullpointer -->
 
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -52,10 +53,10 @@
           <button type="button" id="botonSubmit" onclick="editar()" style="color:black">Editar perfil</button>
       </div>
     </div>
- <%
+<%--  <%
 		Usuario usuario = (Usuario)request.getAttribute("usuario");
 				
-			%>
+			%> --%>
 			<%-- <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		      <div class="enlace5">
 		        <p>Usuario:<%=usuario.getUsuario() %></p>
@@ -84,7 +85,7 @@
        <!--  Añadido para que salgan sus cursos -->
          <ul class="enlacesPerfil">
          
-         <% List<Curso> CursosMatriculados = (ArrayList<Curso>) request.getAttribute("CursosMatriculados");
+         <% List<Curso> CursosMatriculados = (List<Curso>) request.getAttribute("CursosMatriculados");
          if(CursosMatriculados!=null){
          for( Curso CursosMatriculados1 : CursosMatriculados){ %>
         <p>Titulo del CURSO:</p>

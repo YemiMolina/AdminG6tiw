@@ -96,7 +96,7 @@
 
 			</ul>
 
-			<a href="ServletCursos" > Volver a los Cursos</a><br>	
+			<a href="PersistenceServletCursos" > Volver a los Cursos</a><br>	
 			</fieldset>
 	</form>
 </div>

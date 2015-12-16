@@ -4,10 +4,10 @@
     <%@ page import="java.util.Iterator"%>
     <%@ page import="java.util.*"%>
     <%@ page import="java.io.*"%>
-    <%@ page import="es.uc3m.tiw.web.Curso"%>
-    <%@ page import="es.uc3m.tiw.web.Leccion"%>
+    <%@ page import="es.uc3m.tiw.model.Curso"%>
+    <%@ page import="es.uc3m.tiw.model.Leccion"%>
     <%@ page import="es.uc3m.tiw.web.ServletCursos"%>
-    <%@ page import="es.uc3m.tiw.web.Usuario"%>
+    <%@ page import="es.uc3m.tiw.model.Usuario"%>
      
     <%@ page import="es.uc3m.tiw.web.Promocion"%>
     <%@ page import="es.uc3m.tiw.web.ServletPromociones"%>
@@ -77,7 +77,7 @@
 					
 					
 												<body>
-							<% ArrayList<Promocion> listaPromocion =(ArrayList<Promocion>)request.getAttribute("ListaPromociones"); %>
+							<% List<Promocion> listaPromocion =(ArrayList<Promocion>)request.getAttribute("ListaPromociones"); %>
 							<%  for (Promocion promociones : listaPromocion){%>
 							    Nombre <%=promociones.getNombre() %> <br>
 							    Tipo de descuento (en euros) <%=promociones.getDescuento() %> <br>

@@ -9,11 +9,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Mensaje.jsp</title>
 </head>
 <body>
  
-    <%Boolean exitoMatriculado = (Boolean)(request.getAttribute("ExitoAniadir"));%>
+    <%Boolean exitoMatriculado = (Boolean)(request.getAttribute("ExitoAniadir"));%><!-- el problema es que aqui le esta llegando un null en vez de true o false por esto peta -->
     <% if(exitoMatriculado==false){%>
        
         <p>Ya esta matriculado en este curso, no puede volver a matricularse </p>
