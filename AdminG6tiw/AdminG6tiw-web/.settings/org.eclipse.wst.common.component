@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="AdminG6tiw-web">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <dependent-module archiveName="AdminG6tiw-ejb-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/AdminG6tiw-ejb/AdminG6tiw-ejb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="AdminG6tiw-model-2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/AdminG6tiw-model/AdminG6tiw-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/AdminG6tiw-web/target/classes"/>
+        <property name="context-root" value="AdminG6tiw-web"/>
+    </wb-module>
+</project-modules>
